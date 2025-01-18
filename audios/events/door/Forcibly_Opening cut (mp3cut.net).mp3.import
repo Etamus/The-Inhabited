@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://du0c51s4yvg17"
+path="res://.godot/imported/Forcibly_Opening cut (mp3cut.net).mp3-66544bb11c06aca57164e7f475613b26.mp3str"
+
+[deps]
+
+source_file="res://audios/events/door/Forcibly_Opening cut (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/Forcibly_Opening cut (mp3cut.net).mp3-66544bb11c06aca57164e7f475613b26.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

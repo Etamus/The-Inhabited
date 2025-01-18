@@ -1,0 +1,177 @@
+[gd_scene load_steps=12 format=3 uid="uid://dehnsvtst67v6"]
+
+[ext_resource type="Script" path="res://player/inventory.gd" id="1_mlgm8"]
+[ext_resource type="Texture2D" uid="uid://d1ltals207wsv" path="res://player/inventory/inventoryBackground.jpg" id="1_ntk8k"]
+[ext_resource type="FontFile" uid="uid://dymql0jdjskwf" path="res://assets/Fonts/times new roman bold italic.ttf" id="2_foxvo"]
+[ext_resource type="Texture2D" uid="uid://btip3hgb6v71c" path="res://textures/notes/noteTexture.png" id="3_ls652"]
+[ext_resource type="Script" path="res://player/inventory/item_list_manager.gd" id="6_u423u"]
+[ext_resource type="PackedScene" uid="uid://b33eesn07egin" path="res://objects/notes/roomNote.tscn" id="7_v2wt8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_umb0f"]
+font = ExtResource("2_foxvo")
+font_size = 35
+font_color = Color(0.912289, 0.912289, 0.912289, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rcbc0"]
+load_path = "res://.godot/imported/_albedo000.png-ff9c468d5b0659e8498e8ff9f8d189da.s3tc.ctex"
+
+[sub_resource type="Animation" id="Animation_h22kn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.43466, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7j71m"]
+resource_name = "loop"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/MeshInstance3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.43466, 0, 0), Vector3(1.43466, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qpc6"]
+_data = {
+"RESET": SubResource("Animation_h22kn"),
+"loop": SubResource("Animation_7j71m")
+}
+
+[node name="inventario" type="Control" node_paths=PackedStringArray("itemList", "light")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mlgm8")
+itemList = NodePath("ItemList")
+light = NodePath("SubViewportContainer/SubViewport/DirectionalLight3D")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(579.5, 325)
+scale = Vector2(0.905469, 0.5125)
+texture = ExtResource("1_ntk8k")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.0
+offset_top = 43.0
+offset_right = 41.0
+offset_bottom = 83.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="notes" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Itens"
+label_settings = SubResource("LabelSettings_umb0f")
+
+[node name="itens" type="Label" parent="VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Itens"
+label_settings = SubResource("LabelSettings_umb0f")
+
+[node name="ItemList" type="ItemList" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -204.5
+offset_right = 500.0
+offset_bottom = 284.5
+grow_horizontal = 2
+grow_vertical = 2
+allow_search = false
+item_count = 2
+icon_mode = 0
+fixed_icon_size = Vector2i(100, 100)
+item_0/text = "teste teste"
+item_0/icon = ExtResource("3_ls652")
+item_0/selectable = false
+item_1/text = "cast"
+item_1/icon = SubResource("CompressedTexture2D_rcbc0")
+item_1/selectable = false
+
+[node name="itemListManager" type="Node" parent="."]
+script = ExtResource("6_u423u")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(400, 400)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.45218)
+cull_mask = 1048574
+
+[node name="MeshInstance3D" parent="SubViewportContainer/SubViewport/Camera3D" instance=ExtResource("7_v2wt8")]
+transform = Transform3D(1.2, 5.31008e-06, 7.27394e-07, 0, 0.16286, -1.1889, -5.35966e-06, 1.1889, 0.16286, -0.00196066, 0.00248837, -0.433049)
+skeleton = NodePath("../../../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport"]
+libraries = {
+"": SubResource("AnimationLibrary_1qpc6")
+}
+autoplay = "loop"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+visible = false
+light_color = Color(0.74978, 0.74978, 0.74978, 1)
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true

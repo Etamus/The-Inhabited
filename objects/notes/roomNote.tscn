@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://b33eesn07egin"]
+
+[ext_resource type="Texture2D" uid="uid://c45arwkpdep50" path="res://assets/paperTexture.jpg" id="1_7ven6"]
+[ext_resource type="FontFile" uid="uid://dymql0jdjskwf" path="res://assets/fonts/times new roman bold italic.ttf" id="2_0kt2t"]
+[ext_resource type="Script" path="res://objects/notes/room_note.gd" id="3_5aosv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nn2jf"]
+albedo_texture = ExtResource("1_7ven6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eps66"]
+albedo_texture = ExtResource("1_7ven6")
+
+[sub_resource type="BoxMesh" id="BoxMesh_vsfgx"]
+material = SubResource("StandardMaterial3D_eps66")
+size = Vector3(0.2, 0.001, 0.35)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3dbyw"]
+transparency = 1
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.270588)
+grow = true
+grow_amount = 0.003
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lemxv"]
+size = Vector3(0.202148, 0.401917, 0.352539)
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, -0.0426025, 0.00248837, -0.000322819)
+layers = 2
+material_override = SubResource("StandardMaterial3D_nn2jf")
+mesh = SubResource("BoxMesh_vsfgx")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.22822e-09, 0.00105497, -0.142333)
+layers = 2
+pixel_size = 0.0005
+modulate = Color(0, 0, 0, 1)
+text = "One day, you were there, watching your favorite TV show all day long.
+You were such a cute boy, unaware of the harsh and cruel face of the world.
+A little kid, full of dreams, who just wanted to keep playing, like all the other children.
+But, unfortunately, children grow up. Innocence fades, and all that remains of those days are memories.
+Who would have thought you would become such a horrible person?
+I know why you're here and what you've done all these years, Jimmy.
+
+\"The love of money is the root of all evils\"
+
+01.07.1994"
+font = ExtResource("2_0kt2t")
+font_size = 21
+outline_size = 0
+vertical_alignment = 0
+autowrap_mode = 3
+width = 320.0
+
+[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("mesh")]
+script = ExtResource("3_5aosv")
+mesh = NodePath("..")
+counter = SubResource("StandardMaterial3D_3dbyw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 2.91323e-13, 0, 1, 0, -2.91323e-13, 0, 1, 0, 0.194123, 0)
+shape = SubResource("BoxShape3D_lemxv")

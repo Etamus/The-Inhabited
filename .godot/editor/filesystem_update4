@@ -1,0 +1,11 @@
+res://spider_bot/spider_bot.tscn
+res://objects/door/entrance_doors.gd
+res://spider_bot/spider_bot.gd
+res://Principal.tscn
+res://assets/Criatura/testee.tscn
+res://assets/Criatura/testee.gd
+res://spider_bot/ik_target.gd
+res://spider_bot/spiderss_bot.tscn
+res://spider_bot/cenacriatura.tscn
+res://spider_bot/testefinal.tscn
+res://spider_bot/criatura.tscn

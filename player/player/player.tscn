@@ -1,0 +1,221 @@
+[gd_scene load_steps=18 format=3 uid="uid://dfcvnjy1khitp"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_yb761"]
+[ext_resource type="Script" path="res://systems/flashLight/spot_light_3d.gd" id="2_8mmd1"]
+[ext_resource type="Script" path="res://systems/progressBar/control.gd" id="2_me5s2"]
+[ext_resource type="Script" path="res://player/ray_cast_3d.gd" id="3_rlph1"]
+[ext_resource type="AudioStream" uid="uid://dnjqixia8kr6g" path="res://audios/kenney_impact-sounds/Audio/footstep_concrete_004.ogg" id="3_s6vu5"]
+[ext_resource type="Shader" path="res://shaders/analog.gdshader" id="5_j8yn0"]
+[ext_resource type="PackedScene" uid="uid://b7l5xfqgw5v5x" path="res://player/player/ui.tscn" id="7_pyq4s"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1vfes"]
+radius = 0.345909
+height = 1.68202
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vj8qa"]
+size = Vector3(0.0458984, 0.0703125, 1.84351)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ik1aw"]
+radius = 0.86841
+height = 1.73682
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olkg3"]
+bg_color = Color(0.6, 0.6, 0.6, 0.247059)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0syqp"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_5s3ab"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("appeared/CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i64kh"]
+resource_name = "nokiaMenu"
+length = 0.5
+
+[sub_resource type="Animation" id="Animation_ybxel"]
+resource_name = "transitionIn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("appeared/CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("appeared/Timer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"start"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2olra"]
+_data = {
+"RESET": SubResource("Animation_5s3ab"),
+"nokiaMenu": SubResource("Animation_i64kh"),
+"transitionIn": SubResource("Animation_ybxel")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tbf40"]
+shader = ExtResource("5_j8yn0")
+shader_parameter/vhs_resolution = Vector2(320, 240)
+shader_parameter/samples = 2
+shader_parameter/crease_noise = 1.0
+shader_parameter/crease_opacity = 1.0
+shader_parameter/filter_intensity = 0.2
+shader_parameter/tape_crease_smear = 0.1
+shader_parameter/tape_crease_intensity = 1.0
+shader_parameter/tape_crease_jitter = 0.11
+shader_parameter/tape_crease_speed = 0.1
+shader_parameter/tape_crease_discoloration = 1.6
+shader_parameter/bottom_border_thickness = 6.0
+shader_parameter/bottom_border_jitter = 6.0
+shader_parameter/noise_intensity = 0.1
+
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("player", "camera", "progressBarControl", "stamminaTimer", "recoveryTimer", "footstepAudio", "footstepsTimer", "talkTimer", "animationPlayer", "raycast") groups=["player"]]
+script = ExtResource("1_yb761")
+player = NodePath(".")
+camera = NodePath("head/vertical/Camera3D")
+progressBarControl = NodePath("Control")
+stamminaTimer = NodePath("Control/stamminaTimer")
+recoveryTimer = NodePath("Control/recoveryTimer")
+footstepAudio = NodePath("footsteps/AudioStreamPlayer3D")
+footstepsTimer = NodePath("footsteps/footstepsTimer")
+talkTimer = NodePath("appeared/Timer")
+animationPlayer = NodePath("AnimationPlayer")
+raycast = NodePath("head/vertical/Camera3D/RayCast3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_1vfes")
+
+[node name="head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.833464, 0)
+
+[node name="vertical" type="Node3D" parent="head"]
+
+[node name="Camera3D" type="Camera3D" parent="head/vertical"]
+far = 250.0
+
+[node name="Area3D" type="Area3D" parent="head/vertical/Camera3D" groups=["playerAim"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="head/vertical/Camera3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.760019)
+shape = SubResource("BoxShape3D_vj8qa")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="head/vertical/Camera3D"]
+light_volumetric_fog_energy = 0.0
+spot_range = 6.844
+spot_angle = 43.0
+script = ExtResource("2_8mmd1")
+
+[node name="RayCast3D" type="RayCast3D" parent="head/vertical/Camera3D"]
+transform = Transform3D(0.8, 0, 0, 0, -3.49691e-08, -0.8, 0, 0.8, -3.49691e-08, 0, 0, -0.104589)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("3_rlph1")
+
+[node name="playerArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19606, 0)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="playerArea"]
+shape = SubResource("CapsuleShape3D_ik1aw")
+
+[node name="Control" type="ProgressBar" parent="."]
+visible = false
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = 602.0
+offset_right = -925.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_olkg3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0syqp")
+show_percentage = false
+script = ExtResource("2_me5s2")
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 0
+offset_right = 202.0
+offset_bottom = 27.0
+
+[node name="stamminaTimer" type="Timer" parent="Control"]
+wait_time = 0.1
+
+[node name="recoveryTimer" type="Timer" parent="Control"]
+wait_time = 0.1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2olra")
+}
+
+[node name="footsteps" type="Node3D" parent="."]
+
+[node name="footstepsTimer" type="Timer" parent="footsteps"]
+one_shot = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="footsteps"]
+stream = ExtResource("3_s6vu5")
+volume_db = 20.0
+bus = &"sfx"
+
+[node name="appeared" type="Node3D" parent="."]
+
+[node name="Timer" type="Timer" parent="appeared"]
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="appeared"]
+
+[node name="ColorRect" type="ColorRect" parent="appeared/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_tbf40")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI" parent="." instance=ExtResource("7_pyq4s")]
+
+[connection signal="timeout" from="Control/stamminaTimer" to="Control" method="_on_stammina_timer_timeout"]
+[connection signal="timeout" from="Control/recoveryTimer" to="Control" method="_on_recovery_timer_timeout"]
+[connection signal="timeout" from="appeared/Timer" to="." method="_on_timer_timeout"]

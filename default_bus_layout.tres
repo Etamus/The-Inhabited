@@ -1,0 +1,31 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://c53i4ujyq2orv"]
+
+[sub_resource type="AudioEffectCapture" id="AudioEffectCapture_ad2iu"]
+resource_name = "Capture"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_uff2i"]
+resource_name = "SpectrumAnalyzer"
+
+[resource]
+bus/1/name = &"sfx"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/2/name = &"music"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/3/name = &"mic"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 6.02
+bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectCapture_ad2iu")
+bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource("AudioEffectSpectrumAnalyzer_uff2i")
+bus/3/effect/1/enabled = true

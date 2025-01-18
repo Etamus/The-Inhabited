@@ -1,0 +1,398 @@
+[gd_scene load_steps=28 format=4 uid="uid://q4dchcx8rnbv"]
+
+[ext_resource type="Texture2D" uid="uid://bkye1ech24ulm" path="res://assets/Forniture Pack/Models/Abandoned_House_Tele2.jpg" id="1_ry6u4"]
+[ext_resource type="AudioStream" uid="uid://dggcor77l8prx" path="res://videos/mickey/mickeyAudioBlack.ogg" id="2_pmmqu"]
+[ext_resource type="Script" path="res://objects/tvs/upstairsTv.gd" id="3_ewsev"]
+[ext_resource type="Material" uid="uid://dglyys8aa175s" path="res://material/contorno.tres" id="4_6e0jd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jn6kv"]
+resource_name = "Tele2"
+cull_mode = 2
+albedo_texture = ExtResource("1_ry6u4")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_863mp"]
+_surfaces = [{
+"aabb": AABB(-0.619084, -0.568824, -0.446301, 1.23816, 1.13532, 0.965654),
+"format": 34896613377,
+"index_count": 210,
+"index_data": PackedByteArray("AAAFAAYABQAQAA4AEAAAAAMABQAAABAAHQARAB4AHQAPABEAAwAPABAADwATABEAEwADAAIADwADABMAHwAHABoAHwASAAcABAAbAAgABAAYABsAAgASABMAEgAJAAcACQACAAEAEgACAAkAAwABAAIAAwAAAAEAAQAIAAkACAAGAAQABgABAAAACAABAAYAIAALAAoACwAkACEACwAgACQABAAGAAUABwAJAAgADgAQAA8AEQATABIAGQAEAAUAGQAYAAQABwAbABoABwAIABsADgAdABwADgAPAB0AHwARABIAHwAeABEAGQAOABwAGQAFAA4ACwAZAAoACwAYABkADQAbAAwADQAaABsAFQAdABQAFQAcAB0AFwAfABYAFwAeAB8AGQAgAAoAIAAcABUAIAAZABwAGwAhAAwAIQAYAAsAIQAbABgAHwAiABYAIgAaAA0AIgAfABoAHQAjABQAIwAeABcAIwAdAB4AFQAkACAAJAAUACMAJAAVABQAIgAhACQAIQANAAwAIQAiAA0AFwAkACMAJAAWACIAJAAXABYA"),
+"name": "Tele2",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 37,
+"vertex_data": PackedByteArray("wxtQHP//AADDG8nk//8AADvkyeT//wAAO+RQHP//AAAAAKANAsIAAH8MAAACwgAAdAV1CHLMAAB/DP//AsIAAAAAXvICwgAAyAbx/PvOAACRO25ADhUAAA8qo1IOFQAAqCY+zg4VAAAqOHPgDhUAAH/zAAACwgAA//+gDQLCAACK+nUIcswAAP//XvICwgAAf/P//wLCAAA2+fH8+84AAB/dEFUOFQAAKMpkQg4VAAAoyofiDhUAAB/d288OFQAAAACgDQAAAAB/DAAAAAAAAH8M//8AAAAAAABe8gAAAAB/8wAAAAAAAP//oA0AAAAA//9e8gAAAAB/8///AAAAAP9/2jIOFQAA5h7njg4VAAD/f/PqDhUAAIfl544OFQAA/3/njg4VAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mrvfq"]
+resource_name = "Abandoned_House_Cube_196"
+_surfaces = [{
+"aabb": AABB(-0.619084, -0.568824, -0.446301, 1.23816, 1.13532, 0.965654),
+"attribute_data": PackedByteArray("RgNgr0YDya19BGCvRgM5pEYDhK5+BDmk0Q05pNENhK5+BDmk0Q1gr9ENya19BGCv7AYxsOwGMbDsBjGw7AYxsHgCaKt4AmirvAa/sOwG87AZAuerfgZ7sH4Ge7B4AmireAJoq54GtqLsBrai7AZ4o+wGeKPsBnij7AZ4oysCBaxjBuGiYwbhogE9EbWMPZC0gD0StOwtcKNML++i6C6Box8wmzLJMGozpjCtMkBBDyPrQP0kxUDeI58OaKufDmirngbzsOwG87DsBjGw7AYxsOwGMbDsBjGw/g7nq34Ge7B+Bnuw7AZ4o+wGeKPsBnij7AZ4o58OaKufDmirogbOouwGtqLsDgWsYwbhomMG4aII0d6rAM9Gq+DPxqt0vsG7vb3CusG9Kbuoydcp18nBK7HJnyoA2vs7QNnDPDDZ4ztdBdHfXQXR3+EOMbDhDjGweAI6on0P+ux9D/rs4Q7zsHgCOqIQGbgDEBm4A+EOtqKmDWUPpg1lD+EOeKPhDnijnw46ouEO87Bf37T6X9+0+uEOMbDhDjGwyOoI78jqCO/hDnij4Q54oyb9nB4m/Zwenw46ogfzchHhDraiB/NyETd6gcVfeoHFQXqCxB4m3WttJt1rLyfua9KEwh35hMIdy4ShH9Xcqnco3ap32duSd5h/onGYf6JxmH+icQ=="),
+"format": 34896613399,
+"index_count": 210,
+"index_data": PackedByteArray("AQAQABQAEAA2AC4ANgABAAoAEAABADYAZQA8AGkAZQA1ADwACwA0ADgANABDADsAQwALAAgANAALAEMAbAAYAFgAbAA+ABgADwBfAB4ADwBTAF8ABwA9AEEAPQAfABcAHwAHAAQAPQAHAB8ACQADAAYACQAAAAMABQAdACEAHQAWAA4AFgAFAAIAHQAFABYAcQAlACIAJQB9AHQAJQBxAH0ADAAVABIAGQAgABsAMAA3ADIAOQBCAD8AVwANABMAVwBSAA0AGgBeAFsAGgAcAF4AMQBkAGEAMQAzAGQAbgA6AEAAbgBoADoAVAAvAGAAVAARAC8AJgBVACMAJgBQAFUALQBcACkALQBaAFwASQBmAEUASQBjAGYATgBvAEwATgBqAG8AVgByACQAcgBiAEgAcgBWAGIAXQB1ACoAdQBRACcAdQBdAFEAbQB4AEsAeABZACwAeABtAFkAZwB7AEYAewBrAE8AewBnAGsARwB9AHAAfQBEAHkAfQBHAEQAdgBzAHwAcwArACgAcwB2ACsATQB+AHoAfgBKAHcAfgBNAEoA"),
+"material": SubResource("StandardMaterial3D_jn6kv"),
+"name": "Tele2",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 127,
+"vertex_data": PackedByteArray("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")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_863mp")
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_0n3bf"]
+
+[sub_resource type="Shader" id="Shader_201ws"]
+code = "/*
+	CRT shader for Godot Engine by Yui Kinomoto @arlez80
+*/
+shader_type canvas_item;
+
+// 画面
+uniform sampler2D screen_texture : hint_screen_texture;
+
+// ブラウン管のガラスの曲がり具合（フラットなやつは0.0でいいかな）
+uniform float crt_curve : hint_range( 0.0, 1.0 ) = 0.02;
+// 走査線の濃さ
+uniform float crt_scan_line_color : hint_range( 0.0, 1.0 ) = 0.347;
+// 光量
+uniform float aperture_grille_rate : hint_range( 0.0, 1.0 ) = 0.4;
+// RFスイッチ的ブラー
+uniform float rf_switch_esque_blur : hint_range( 0.0, 1.0 ) = 1.0;
+// 白色ノイズ
+uniform float white_noise_rate : hint_range( 0.0, 1.0 ) = 0.0;
+
+float random( vec2 pos )
+{
+	return fract(sin(dot(pos, vec2(12.9898,78.233))) * 43758.5453);
+}
+
+void fragment( )
+{
+	// ガラスの曲がり具合
+	vec2 crt_curve_shift = ( vec2( 1.0, 1.0 ) - sin( UV.yx * PI ) ) * crt_curve;
+	vec2 crt_curve_scale = vec2( 1.0, 1.0 ) + crt_curve_shift * 2.0;
+	vec2 texture_fixed_uv = UV * crt_curve_scale - crt_curve_shift;
+	vec2 fixed_uv = SCREEN_UV * crt_curve_scale - crt_curve_shift;
+	// 範囲外を消す
+	float enable_color = float( 0.0 <= texture_fixed_uv.x && texture_fixed_uv.x <= 1.0 && 0.0 <= texture_fixed_uv.y && texture_fixed_uv.y <= 1.0 );
+
+	// ガラスの曲がり具合から元色を取得 + RFスイッチ的ブラー
+	COLOR.rgb = (
+		(
+			texture( screen_texture, fixed_uv ).rgb
+		*	( 1.0 - rf_switch_esque_blur * 0.5 )
+		)
+	+	(
+			(
+				texture( screen_texture, fixed_uv + vec2( -SCREEN_PIXEL_SIZE.x * 3.1, 0.0 ) ).rgb
+			+	texture( screen_texture, fixed_uv + vec2( SCREEN_PIXEL_SIZE.x * 3.1, 0.0 ) ).rgb
+			)
+			*	( rf_switch_esque_blur * 0.25 )	// （RFノイズ）0.5 * （テクスチャから読んだ2箇所を半分にしたい）0.5
+		)
+	) * enable_color;
+	COLOR.a = 1.0;
+
+	// ------------------------------------------------
+	// 以下はアパーチャグリル上の1ピクセルごとの処理
+	vec2 aperture_grille_pixel = vec2( floor( ( fixed_uv.x / SCREEN_PIXEL_SIZE.x ) / 3.0 ) * 3.0, fixed_uv.y );
+
+	// 白色ノイズ
+	float white_noise = random( aperture_grille_pixel + vec2( sin( TIME * 0.543254 ), cos( TIME * 0.254323563 ) ) );
+	COLOR.rgb = mix(
+		COLOR.rgb
+	,	vec3( white_noise, white_noise, white_noise )
+	,	white_noise_rate * enable_color
+	);
+
+	// アパーチャグリル再現
+	float aperture_grille_point = mod( ( ( SCREEN_UV.x * crt_curve_scale.x ) - crt_curve_shift.x ) / SCREEN_PIXEL_SIZE.x, 3.0 );
+	float aperture_grille_r_rate = clamp( 1.0 - aperture_grille_point, 0.0, 1.0 ) + clamp( aperture_grille_point - 2.0, 0.0, 1.0 );
+	float aperture_grille_g_rate = clamp( 1.0 - abs( 1.0 - aperture_grille_point ), 0.0, 1.0 );
+	float aperture_grille_b_rate = 1.0 - aperture_grille_r_rate - aperture_grille_g_rate;
+	COLOR = clamp(
+		COLOR * vec4(
+			normalize( vec3(
+				clamp( aperture_grille_r_rate, aperture_grille_rate, 1.0 )
+			,	clamp( aperture_grille_g_rate, aperture_grille_rate, 1.0 )
+			,	clamp( aperture_grille_b_rate, aperture_grille_rate, 1.0 )
+			) )
+		,	1.0
+		)
+	,	vec4( 0.0, 0.0, 0.0, 0.0 )
+	,	vec4( 1.0, 1.0, 1.0, 1.0 )
+	);
+
+	// 走査線
+	COLOR = mix(
+		COLOR
+	,	vec4( 0.0, 0.0, 0.0, 1.0 )
+	,	float( 0 == int( fixed_uv.y / SCREEN_PIXEL_SIZE.y ) % 2 ) * crt_scan_line_color
+	);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dvjcc"]
+shader = SubResource("Shader_201ws")
+shader_parameter/crt_curve = 0.032
+shader_parameter/crt_scan_line_color = 0.111
+shader_parameter/aperture_grille_rate = 0.13
+shader_parameter/rf_switch_esque_blur = 1.0
+shader_parameter/white_noise_rate = 0.011
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_8c4mc"]
+resource_local_to_scene = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m404c"]
+resource_local_to_scene = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qcp6j"]
+material = SubResource("ShaderMaterial_m404c")
+size = Vector2(1.2, 0.8)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_uhwau"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ts1fc"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcjji"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_uhwau")
+emission_enabled = true
+emission_energy_multiplier = 4.0
+emission_texture = SubResource("ViewportTexture_ts1fc")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_65gx6"]
+material = SubResource("ShaderMaterial_m404c")
+size = Vector2(1.05, 0.8)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_e4ktc"]
+viewport_path = NodePath("tvTurn")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6iodc"]
+viewport_path = NodePath("tvTurn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mo3r"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_e4ktc")
+emission_enabled = true
+emission_energy_multiplier = 4.0
+emission_texture = SubResource("ViewportTexture_6iodc")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ridgv"]
+size = Vector3(1.19723, 1.14215, 0.943054)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7eg53"]
+size = Vector3(0.924316, 1, 1.80078)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e7jau"]
+size = Vector3(1.31445, 1.21265, 1.0332)
+
+[sub_resource type="Animation" id="Animation_3t3nl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("screen2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_uv68e"]
+resource_name = "turnOff"
+length = 3.4
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tvTurn/VideoStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("screen2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"pauseTv"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_sh7i1"]
+resource_name = "turnOn"
+length = 3.4
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tvTurn/VideoStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("screen2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.36667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"pauseTv"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r6gpw"]
+_data = {
+"RESET": SubResource("Animation_3t3nl"),
+"turnOff": SubResource("Animation_uv68e"),
+"turnOn": SubResource("Animation_sh7i1")
+}
+
+[node name="Tele" type="MeshInstance3D"]
+transform = Transform3D(0, 0, 2.042, 0, 2.042, 0, -2.042, 0, 0, 14.5364, -14.1276, 7.04877)
+mesh = SubResource("ArrayMesh_mrvfq")
+skeleton = NodePath("")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+scaling_3d_scale = 1.0
+size = Vector2i(640, 360)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="SubViewport"]
+offset_right = 640.0
+offset_bottom = 368.0
+audio_track = 1
+stream = SubResource("VideoStreamTheora_0n3bf")
+volume_db = -10.31
+expand = true
+loop = true
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport"]
+material = SubResource("ShaderMaterial_dvjcc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="tvTurn" type="SubViewport" parent="."]
+scaling_3d_scale = 1.0
+size = Vector2i(640, 360)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="tvTurn"]
+offset_right = 640.0
+offset_bottom = 368.0
+audio_track = 1
+stream = SubResource("VideoStreamTheora_8c4mc")
+volume_db = -10.31
+expand = true
+
+[node name="ColorRect" type="ColorRect" parent="tvTurn"]
+material = SubResource("ShaderMaterial_dvjcc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="screen" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 8.74227e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74227e-08, -1, 4.37114e-08, 0.00792527, 0.0694485, -0.383293)
+mesh = SubResource("PlaneMesh_qcp6j")
+surface_material_override/0 = SubResource("StandardMaterial3D_hcjji")
+
+[node name="screen2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 7.45058e-08, -3.55271e-15, 0, -4.37114e-08, -1, -7.45058e-08, -1, 4.37114e-08, 0.00792527, 0.0694485, -0.387489)
+visible = false
+mesh = SubResource("PlaneMesh_65gx6")
+surface_material_override/0 = SubResource("StandardMaterial3D_7mo3r")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(0.489716, 0, 0, 0, 0.489716, 0, 0, 0, 0.489716, -0.0123317, 0, -0.338834)
+stream = ExtResource("2_pmmqu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, -4.47042e-08, 0, 1, 0, 4.47042e-08, 0, 1, -0.00171208, -0.0130873, 0.0252967)
+shape = SubResource("BoxShape3D_ridgv")
+
+[node name="timerArea" type="Area3D" parent="." groups=["interactable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="timerArea"]
+transform = Transform3D(0.997218, 0, 0.0745786, 0, 1, 0, -0.0745786, 0, 0.997218, 0.0316668, 0, -0.358034)
+shape = SubResource("BoxShape3D_7eg53")
+
+[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("video", "video2", "audio", "animationPlayer", "mesh")]
+script = ExtResource("3_ewsev")
+video = NodePath("../SubViewport/VideoStreamPlayer")
+video2 = NodePath("../tvTurn/VideoStreamPlayer")
+audio = NodePath("../AudioStreamPlayer3D")
+animationPlayer = NodePath("../AnimationPlayer")
+mesh = NodePath("..")
+counter = ExtResource("4_6e0jd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, -4.47038e-08, 0, 1, 0, 4.47038e-08, 0, 1, -0.00171208, -0.0130873, 0.0252967)
+shape = SubResource("BoxShape3D_e7jau")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r6gpw")
+}
+
+[connection signal="body_entered" from="timerArea" to="Area3D" method="_on_timer_area_body_entered"]
+[connection signal="body_exited" from="timerArea" to="Area3D" method="_on_timer_area_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="Area3D" method="_on_animation_player_animation_finished"]

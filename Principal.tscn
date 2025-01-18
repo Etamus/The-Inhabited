@@ -1,0 +1,200 @@
+[gd_scene load_steps=18 format=3 uid="uid://drmf2chj2em5l"]
+
+[ext_resource type="PackedScene" uid="uid://bjf2gnjh6gx8v" path="res://assets/Trailer_Park/Models/trailer_park.tscn" id="1_wlfln"]
+[ext_resource type="PackedScene" uid="uid://dfcvnjy1khitp" path="res://player/player/player.tscn" id="2_oaulf"]
+[ext_resource type="PackedScene" uid="uid://d0pqbhkmo18rv" path="res://systems/settingsMenu/settings.tscn" id="3_qbcex"]
+[ext_resource type="AudioStream" uid="uid://s8bxckhoi7uo" path="res://audios/ambienceforest.ogg" id="3_s71w3"]
+[ext_resource type="PackedScene" uid="uid://q4dchcx8rnbv" path="res://objects/tvs/upstairsTv.tscn" id="5_1qlxy"]
+[ext_resource type="PackedScene" uid="uid://dehnsvtst67v6" path="res://player/inventory/inventario.tscn" id="5_oxy0t"]
+[ext_resource type="Script" path="res://systems/configs_manager.gd" id="6_lmbjg"]
+[ext_resource type="PackedScene" uid="uid://biif45vfk4ani" path="res://assets/Trailer_Park/Characters/Character_Female.fbx" id="7_8uvdh"]
+[ext_resource type="ArrayMesh" uid="uid://d2o2486ofpu8j" path="res://assets/PSX Cars/Car 05/Car5.obj" id="7_u5q3p"]
+[ext_resource type="PackedScene" uid="uid://cp7ofm773cyxp" path="res://objects/lampshades/mediumLampshade.tscn" id="8_anw8a"]
+[ext_resource type="PackedScene" uid="uid://db0rktcsv4hes" path="res://assets/Trailer_Park/Characters/Character_Female_01.fbx" id="8_ljcsd"]
+[ext_resource type="PackedScene" uid="uid://dsyqeryrhps6" path="res://assets/Trailer_Park/Characters/Character_Male.fbx" id="9_s3j1b"]
+[ext_resource type="PackedScene" uid="uid://cqjc4tl7phd6q" path="res://assets/Trailer_Park/Characters/Character_Male_01.fbx" id="10_4hix5"]
+[ext_resource type="PackedScene" uid="uid://dg76cjo6o4rhb" path="res://objects/door/porta.tscn" id="12_rqd33"]
+[ext_resource type="PackedScene" uid="uid://c134aocdqgwip" path="res://spider_bot/criatura.tscn" id="16_jflyb"]
+
+[sub_resource type="Environment" id="Environment_bluj4"]
+background_mode = 1
+background_color = Color(0.10748, 0.10748, 0.10748, 1)
+fog_enabled = true
+fog_depth_curve = 0.148651
+fog_depth_begin = 0.0
+fog_depth_end = 220.5
+volumetric_fog_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2xfrd"]
+size = Vector3(81.2346, 0.169922, 65.0103)
+
+[node name="The_Inhabited" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.862827, 0)
+
+[node name="Mapas" type="Node3D" parent="."]
+
+[node name="Parque de Trailers" parent="Mapas" instance=ExtResource("1_wlfln")]
+
+[node name="Jogador" type="Node3D" parent="."]
+
+[node name="player" parent="Jogador" instance=ExtResource("2_oaulf")]
+transform = Transform3D(0.0523882, 0, -0.998627, 0, 1, 0, 0.998627, 0, 0.0523882, -7.16247, 0.267548, 10.572)
+mouseSensitivity = 0.4
+
+[node name="Ambiente" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Ambiente"]
+transform = Transform3D(1, 0, 0, 0, 0.582478, 0.812847, 0, -0.812847, 0.582478, 0, 45.3064, 0)
+light_energy = 0.02
+light_indirect_energy = 0.0
+light_bake_mode = 1
+shadow_enabled = true
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 40.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Ambiente"]
+environment = SubResource("Environment_bluj4")
+
+[node name="Colisão" type="Node3D" parent="Ambiente"]
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Ambiente/Colisão"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96046e-08, -1.19209e-07, 2.98023e-08)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ambiente/Colisão/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4806, -0.859375, 18.8253)
+shape = SubResource("BoxShape3D_2xfrd")
+
+[node name="Som Ambiente" type="AudioStreamPlayer" parent="Ambiente"]
+stream = ExtResource("3_s71w3")
+volume_db = -20.0
+autoplay = true
+
+[node name="Interface" type="Node3D" parent="."]
+
+[node name="settings" type="CanvasLayer" parent="Interface"]
+process_mode = 3
+
+[node name="settings" parent="Interface/settings" instance=ExtResource("3_qbcex")]
+visible = false
+
+[node name="configsManager" type="Node3D" parent="Interface/settings"]
+process_mode = 1
+script = ExtResource("6_lmbjg")
+
+[node name="inventoryLayer" type="CanvasLayer" parent="Interface/settings"]
+
+[node name="inventario" parent="Interface/settings" instance=ExtResource("5_oxy0t")]
+visible = false
+
+[node name="Cenário" type="Node3D" parent="."]
+
+[node name="Televisão" type="Node3D" parent="Cenário"]
+
+[node name="Televisão" parent="Cenário/Televisão" instance=ExtResource("5_1qlxy")]
+transform = Transform3D(-0.00756028, 0, -0.54449, 0, 0.525727, 0, 0.594987, 0, -0.00691864, 0.390945, 0.932372, -0.314845)
+
+[node name="Luzes" type="Node3D" parent="Cenário"]
+
+[node name="Poste" type="Node3D" parent="Cenário/Luzes"]
+
+[node name="LuzPoste" type="SpotLight3D" parent="Cenário/Luzes/Poste"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 8.54051, 4.76412, 18.315)
+light_color = Color(0.929412, 0.694118, 0.164706, 1)
+light_energy = 16.0
+light_indirect_energy = 5.04
+light_bake_mode = 1
+shadow_transmittance_bias = -0.05
+shadow_blur = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 50.0
+distance_fade_length = 15.0
+spot_range = 10.0
+spot_angle = 48.6407
+
+[node name="LuzPoste2" type="SpotLight3D" parent="Cenário/Luzes/Poste"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -21.5365, 4.7614, 16.9848)
+light_color = Color(0.929412, 0.694118, 0.164706, 1)
+light_energy = 16.0
+light_indirect_energy = 5.04
+light_bake_mode = 1
+shadow_transmittance_bias = -0.05
+shadow_blur = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 50.0
+distance_fade_length = 15.0
+spot_range = 10.0
+spot_angle = 65.0
+
+[node name="LuzPoste3" type="SpotLight3D" parent="Cenário/Luzes/Poste"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 32.3039, 4.73788, 18.4182)
+light_color = Color(0.929412, 0.694118, 0.164706, 1)
+light_energy = 16.0
+light_indirect_energy = 5.04
+light_bake_mode = 1
+shadow_transmittance_bias = -0.05
+shadow_blur = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 50.0
+distance_fade_length = 15.0
+spot_range = 10.0
+spot_angle = 65.0
+
+[node name="Teto" type="Node3D" parent="Cenário/Luzes"]
+
+[node name="LuzTeto" type="OmniLight3D" parent="Cenário/Luzes/Teto"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.72298, 1.68762, -0.512123)
+light_color = Color(0.971237, 0.833083, 0.701625, 1)
+light_volumetric_fog_energy = 0.0
+shadow_reverse_cull_face = true
+distance_fade_enabled = true
+distance_fade_begin = 5.0
+distance_fade_length = 20.0
+omni_range = 3.0
+omni_attenuation = -0.212
+omni_shadow_mode = 0
+
+[node name="LuzTeto2" type="OmniLight3D" parent="Cenário/Luzes/Teto"]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 1.75085, 1.57641, 4.771)
+light_color = Color(0.971237, 0.833083, 0.701625, 1)
+light_volumetric_fog_energy = 0.0
+shadow_reverse_cull_face = true
+distance_fade_enabled = true
+distance_fade_begin = 5.0
+distance_fade_length = 20.0
+omni_range = 3.0
+omni_attenuation = -0.212
+omni_shadow_mode = 0
+
+[node name="Abajur" type="Node3D" parent="Cenário/Luzes"]
+
+[node name="Abajur" parent="Cenário/Luzes/Abajur" instance=ExtResource("8_anw8a")]
+transform = Transform3D(0.106731, 0, 0, 0, 0.0816694, 0, 0, 0, 0.109495, 3.08243, 0.839402, 0.773539)
+
+[node name="Carro" type="Node3D" parent="Cenário"]
+
+[node name="Carro" type="MeshInstance3D" parent="Cenário/Carro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6801, -0.774414, 36.9288)
+mesh = ExtResource("7_u5q3p")
+skeleton = NodePath("../../..")
+
+[node name="Portas" type="Node3D" parent="Cenário"]
+
+[node name="Porta" parent="Cenário/Portas" instance=ExtResource("12_rqd33")]
+transform = Transform3D(3.54979e-06, 0, 0.999364, 0, -1.06379, 0, -0.980608, 0, 3.61769e-06, -0.0557058, 1.21648, 2.43515)
+
+[node name="Personagens" type="Node3D" parent="."]
+
+[node name="Martha" parent="Personagens" instance=ExtResource("7_8uvdh")]
+transform = Transform3D(0.475731, 0, -0.879591, 0, 1, 0, 0.879591, 0, 0.475731, -1.82474, -0.774414, 7.29788)
+
+[node name="Emma" parent="Personagens" instance=ExtResource("8_ljcsd")]
+transform = Transform3D(0.252424, 0, -0.967617, 0, 1, 0, 0.967617, 0, 0.252424, -0.993848, -0.774414, 9.55624)
+
+[node name="Travis" parent="Personagens" instance=ExtResource("9_s3j1b")]
+transform = Transform3D(0.0543925, 0, -0.99852, 0, 1, 0, 0.99852, 0, 0.0543925, 6.29264, -0.774414, 1.03065)
+
+[node name="Randy" parent="Personagens" instance=ExtResource("10_4hix5")]
+transform = Transform3D(0.378697, 0, -0.925521, 0, 1, 0, 0.925521, 0, 0.378697, -2.4572, -0.774414, 8.87124)
+
+[node name="Criatura" parent="." instance=ExtResource("16_jflyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46481, -0.33678, 23.6168)

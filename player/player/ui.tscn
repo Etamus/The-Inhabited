@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7l5xfqgw5v5x"]
+
+[ext_resource type="Shader" path="res://shaders/dither.gdshader" id="1_ebsqo"]
+[ext_resource type="Texture2D" uid="uid://boell6kp82cwe" path="res://textures/pointer/Pointer.png" id="2_ks053"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eoife"]
+shader = ExtResource("1_ebsqo")
+shader_parameter/color = Vector4(1, 1, 1, 0.2)
+shader_parameter/roll = true
+shader_parameter/scanlines_width = 0.25
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/warp_amount = 1.0
+shader_parameter/vignette_opacity = 0.5
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/overlay = false
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/noise_speed = 5.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_eoife")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="Container" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Container"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ks053")

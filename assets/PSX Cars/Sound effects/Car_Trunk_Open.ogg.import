@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c4h2s2l67n0m7"
+path="res://.godot/imported/Car_Trunk_Open.ogg-9d0672b11bcce30f3bd20f70339645cb.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/PSX Cars/Sound effects/Car_Trunk_Open.ogg"
+dest_files=["res://.godot/imported/Car_Trunk_Open.ogg-9d0672b11bcce30f3bd20f70339645cb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

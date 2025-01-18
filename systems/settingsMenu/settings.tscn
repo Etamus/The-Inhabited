@@ -1,0 +1,182 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0pqbhkmo18rv"]
+
+[ext_resource type="Script" path="res://systems/settingsMenu/settings.gd" id="1_p0sln"]
+[ext_resource type="PackedScene" uid="uid://cbnia04cf8rfu" path="res://systems/settingsMenu/volume.tscn" id="2_8orvv"]
+[ext_resource type="FontFile" uid="uid://g8bg3or1ijxw" path="res://assets/Fonts/times new roman bold.ttf" id="2_kc1j1"]
+[ext_resource type="FontFile" uid="uid://cxqdd65hsuari" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="3_1w0u8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_688ei"]
+font = ExtResource("2_kc1j1")
+font_size = 40
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1coph"]
+font = ExtResource("2_kc1j1")
+font_size = 22
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3xnty"]
+font = ExtResource("2_kc1j1")
+font_size = 22
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="settings" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p0sln")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.219608)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -142.0
+offset_right = 125.0
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="graphics" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="graphics" type="Label" parent="MarginContainer/HBoxContainer/graphics"]
+layout_mode = 2
+text = "Gráficos"
+label_settings = SubResource("LabelSettings_688ei")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="shadows" type="Label" parent="MarginContainer/HBoxContainer/graphics"]
+layout_mode = 2
+text = "Qualidade das Sombras"
+label_settings = SubResource("LabelSettings_688ei")
+horizontal_alignment = 1
+
+[node name="shadowConfigs" type="OptionButton" parent="MarginContainer/HBoxContainer/graphics"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.262745, 0.321569, 0.239216, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_1w0u8")
+item_count = 3
+popup/item_0/text = "Low"
+popup/item_1/text = "Medium"
+popup/item_1/id = 1
+popup/item_2/text = "High"
+popup/item_2/id = 2
+
+[node name="shadowButton" type="CheckButton" parent="MarginContainer/HBoxContainer/graphics"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_kc1j1")
+theme_override_font_sizes/font_size = 26
+button_pressed = true
+text = "Sombras"
+flat = true
+
+[node name="fogButton" type="CheckButton" parent="MarginContainer/HBoxContainer/graphics"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.262745, 0.321569, 0.239216, 1)
+theme_override_colors/font_hover_color = Color(0.262745, 0.321569, 0.239216, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.262745, 0.321569, 0.239216, 1)
+theme_override_colors/font_color = Color(0.262745, 0.321569, 0.239216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_kc1j1")
+theme_override_font_sizes/font_size = 26
+button_pressed = true
+text = "Névoa"
+flat = true
+
+[node name="volumFogButton" type="CheckButton" parent="MarginContainer/HBoxContainer/graphics"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.262745, 0.321569, 0.239216, 1)
+theme_override_colors/font_hover_color = Color(0.262745, 0.321569, 0.239216, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.262745, 0.321569, 0.239216, 1)
+theme_override_colors/font_color = Color(0.262745, 0.321569, 0.239216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_kc1j1")
+theme_override_font_sizes/font_size = 26
+button_pressed = true
+text = "Névoa Volumétrica"
+flat = true
+
+[node name="sounds" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="Sounds" type="Label" parent="MarginContainer/HBoxContainer/sounds"]
+layout_mode = 2
+text = "MÚSICAS"
+label_settings = SubResource("LabelSettings_688ei")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="master" type="Label" parent="MarginContainer/HBoxContainer/sounds"]
+layout_mode = 2
+text = "Geral"
+label_settings = SubResource("LabelSettings_688ei")
+horizontal_alignment = 1
+
+[node name="HSlider" parent="MarginContainer/HBoxContainer/sounds" instance=ExtResource("2_8orvv")]
+layout_mode = 2
+
+[node name="music" type="Label" parent="MarginContainer/HBoxContainer/sounds"]
+layout_mode = 2
+text = "Música
+"
+label_settings = SubResource("LabelSettings_1coph")
+horizontal_alignment = 1
+
+[node name="HSlider2" parent="MarginContainer/HBoxContainer/sounds" instance=ExtResource("2_8orvv")]
+layout_mode = 2
+busName = "music"
+
+[node name="effects" type="Label" parent="MarginContainer/HBoxContainer/sounds"]
+layout_mode = 2
+text = "Efeitos"
+label_settings = SubResource("LabelSettings_3xnty")
+horizontal_alignment = 1
+
+[node name="HSlider3" parent="MarginContainer/HBoxContainer/sounds" instance=ExtResource("2_8orvv")]
+layout_mode = 2
+busName = "sfx"
+
+[connection signal="item_selected" from="MarginContainer/HBoxContainer/graphics/shadowConfigs" to="." method="_on_shadow_configs_item_selected"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/graphics/shadowButton" to="." method="_on_shadow_button_toggled"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/graphics/fogButton" to="." method="_on_fog_button_toggled"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/graphics/volumFogButton" to="." method="_on_volum_fog_button_toggled"]

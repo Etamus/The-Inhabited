@@ -1,0 +1,179 @@
+[gd_scene load_steps=13 format=3 uid="uid://b5jegf7xbt33j"]
+
+[ext_resource type="Script" path="res://systems/firstScene/first_scene.gd" id="1_mtpsk"]
+[ext_resource type="FontFile" uid="uid://g7m7ptjgj537" path="res://assets/fonts/times new roman.ttf" id="2_x5kyj"]
+[ext_resource type="AudioStream" uid="uid://b2k0pdb3a0j2u" path="res://audios/kenney_impact-sounds/Audio/footstep_grass_002.ogg" id="4_ndiow"]
+[ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="5_ouvba"]
+
+[sub_resource type="Animation" id="Animation_dkhep"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_5dp54"]
+resource_name = "continue"
+
+[sub_resource type="Animation" id="Animation_g3xh7"]
+resource_name = "labelAnim"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qoteu"]
+resource_name = "typing"
+length = 58.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/RichTextLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 31.4667, 33.9667, 54.9333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.603748, 0.607764, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p3850"]
+_data = {
+"RESET": SubResource("Animation_dkhep"),
+"continue": SubResource("Animation_5dp54"),
+"labelAnim": SubResource("Animation_g3xh7"),
+"typing": SubResource("Animation_qoteu")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flyge"]
+shader = ExtResource("5_ouvba")
+shader_parameter/crt_curve = 0.03
+shader_parameter/crt_scan_line_color = 0.0
+shader_parameter/aperture_grille_rate = 0.4
+shader_parameter/rf_switch_esque_blur = 0.0
+shader_parameter/white_noise_rate = 0.124
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_f032g"]
+file = "res://systems/firstScene/turnOn.ogg"
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_hgkmg"]
+file = "res://systems/firstScene/turnOff.ogg"
+
+[node name="firstScene" type="Control" node_paths=PackedStringArray("animationPlayer", "audio", "richLabel", "label", "videoTurnOn", "videoTurnOff")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_mtpsk")
+animationPlayer = NodePath("CanvasLayer/AnimationPlayer")
+audio = NodePath("CanvasLayer/AudioStreamPlayer")
+richLabel = NodePath("CanvasLayer/RichTextLabel")
+label = NodePath("CanvasLayer/Label")
+videoTurnOn = NodePath("CanvasLayer/turnOn")
+videoTurnOff = NodePath("CanvasLayer/turnOff")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.541176, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+offset_left = 123.0
+offset_top = 87.0
+offset_right = 1029.0
+offset_bottom = 514.0
+size_flags_horizontal = 4
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("2_x5kyj")
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[center] It's been 10 years since my grandma disappeared. She was so dear to all of us, and her sudden vanishing left a silence that never truly faded. But last night, I received a call... a voice, eerily familiar, whispered through the static. They claimed my grandma had left a house for me in Mongaguá, a nearby city.
+
+I don’t trust this. It doesn’t make sense. Why now? Why after all these years? Yet, there was something deeply unsettling about the voice... as if it knew more than it was saying. Against my better judgment, I have to find out what's going on.
+
+They said it's a huge, old house on a street lined with other abandoned mansions. A place like this... it's unusual for a small country town. Something about it feels wrong... very wrong. [/center]"
+fit_content = true
+scroll_active = false
+scroll_following = true
+visible_characters = 65
+visible_ratio = 0.0882597
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = 254.5
+offset_right = 168.0
+offset_bottom = 286.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_x5kyj")
+theme_override_font_sizes/font_size = 28
+text = "Press any key to continue"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_p3850")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer"]
+stream = ExtResource("4_ndiow")
+volume_db = -8.0
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_flyge")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -4.0
+offset_right = 6.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="turnOn" type="VideoStreamPlayer" parent="CanvasLayer"]
+modulate = Color(0, 0, 0.541176, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = SubResource("VideoStreamTheora_f032g")
+expand = true
+
+[node name="turnOff" type="VideoStreamPlayer" parent="CanvasLayer"]
+modulate = Color(0, 0, 0.541176, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = SubResource("VideoStreamTheora_hgkmg")
+expand = true
+
+[connection signal="animation_finished" from="CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="finished" from="CanvasLayer/turnOn" to="." method="_on_video_stream_player_finished"]
+[connection signal="finished" from="CanvasLayer/turnOff" to="." method="_on_turn_off_finished"]

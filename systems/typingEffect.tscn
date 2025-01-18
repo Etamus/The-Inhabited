@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://q760kvha4dqx"]
+
+[ext_resource type="Script" path="res://systems/typingEffect.gd" id="1_ewmhf"]
+[ext_resource type="FontFile" uid="uid://g7m7ptjgj537" path="res://assets/fonts/times new roman.ttf" id="2_mjt8x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0fx2h"]
+font = ExtResource("2_mjt8x")
+font_size = 26
+font_color = Color(0, 0, 0, 1)
+outline_size = 8
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_ewmhf")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.0538194
+anchor_top = 0.740741
+anchor_right = 0.946181
+anchor_bottom = 0.805556
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_0fx2h")
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
