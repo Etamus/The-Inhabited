@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dfcvnjy1khitp"]
+[gd_scene load_steps=17 format=3 uid="uid://dfcvnjy1khitp"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_yb761"]
 [ext_resource type="Script" path="res://systems/flashLight/spot_light_3d.gd" id="2_8mmd1"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://player/ray_cast_3d.gd" id="3_rlph1"]
 [ext_resource type="AudioStream" uid="uid://dnjqixia8kr6g" path="res://audios/kenney_impact-sounds/Audio/footstep_concrete_004.ogg" id="3_s6vu5"]
 [ext_resource type="Shader" path="res://shaders/analog.gdshader" id="5_j8yn0"]
-[ext_resource type="PackedScene" uid="uid://b7l5xfqgw5v5x" path="res://player/player/ui.tscn" id="7_pyq4s"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1vfes"]
 radius = 0.345909
@@ -203,6 +202,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -213,8 +213,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="UI" parent="." instance=ExtResource("7_pyq4s")]
 
 [connection signal="timeout" from="Control/stamminaTimer" to="Control" method="_on_stammina_timer_timeout"]
 [connection signal="timeout" from="Control/recoveryTimer" to="Control" method="_on_recovery_timer_timeout"]
